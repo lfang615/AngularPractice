@@ -14,5 +14,15 @@ export class HeroService {
     return of(HEROES);
   }
 
+  // ngOnInit(): void {
+  //   this.getHero();
+  // }
+  
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
+  }
+
   constructor(private messageService: MessageService) { }
 }
